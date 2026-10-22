@@ -2,7 +2,7 @@
   "name": "pfy-language",
   "displayName": "Pfy",
   "description": "Syntax highlighting, snippets, and file icons for the Pfy data and scripting language.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "bxat01",
   "license": "MIT",
   "engines": {
@@ -29,11 +29,13 @@
       {
         "id": "pfy",
         "aliases": [
-          "Pfy"
+          "Pfy",
+          "pfy"
         ],
         "extensions": [
           ".pfy"
         ],
+        "firstLine": "^\\s*pfy\\s+1\\.0(?:\\s*;|\\s*$)",
         "configuration": "./language-configuration.json"
       }
     ],
