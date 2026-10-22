@@ -1,0 +1,80 @@
+# A configuration document in the same shape Playfy exports.
+# Inspect it as JSON:
+#   pfy run examples/config.pfy --json
+pfy 1.0;
+
+application = "Playfy";
+format = "playfy-backup";
+version = "25.10.8";
+exported = "2026-10-22T00:00:00Z";
+
+settings = {
+    mode: "night",
+    night: "dark",
+    accent: "#0062FF",
+    surface: "classic",
+    glassBlur: 0,
+    glassOpacity: 0.74,
+    font: "\"Segoe UI Variable Text\", \"Segoe UI\", sans-serif",
+    language: "en",
+    showConsole: true,
+    defaultInterval: 300,
+    queueLoop: true,
+    background: {
+        enabled: false,
+        id: "none",
+        url: null,
+        opacity: 0.6,
+        blur: 0,
+        dim: 0.2,
+        shadow: 0.35,
+    },
+};
+
+shortcuts = {
+    console.toggle: "Alt+Backquote",
+    search.focus: "Alt+KeyF",
+    nav.home: "Alt+Digit1",
+    nav.queue: "Alt+Digit2",
+    nav.settings: "Alt+Digit3",
+};
+
+games = [
+    {
+        id: "357607133254254632",
+        name: "Dead by Daylight",
+        is_installed: true,
+        executables: [
+            {
+                name: "deadbydaylight.exe",
+                os: "win32",
+                filename: "deadbydaylight.exe",
+                is_launcher: true,
+                is_installed: true,
+            },
+        ],
+    },
+];
+
+queue = {
+    intervalSec: 300,
+    loop: true,
+    entries: [
+        {
+            uid: "demo-entry",
+            game: {
+                id: "357607133254254632",
+                name: "Dead by Daylight",
+                executables: [
+                    {
+                        name: "deadbydaylight.exe",
+                        os: "win32",
+                        filename: "deadbydaylight.exe",
+                        is_launcher: true,
+                        is_installed: true,
+                    },
+                ],
+            },
+        },
+    ],
+};
