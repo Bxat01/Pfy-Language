@@ -9,14 +9,21 @@ definition, grammar, or plugin to provide highlighting and editing features.
 The [`vscode-pfy`](../vscode-pfy/) extension currently provides:
 
 - `.pfy` file association and the **Pfy** language mode.
+- Detection of the `pfy 1.0` header in files without a `.pfy` extension.
 - TextMate syntax highlighting for headers, comments, keywords, strings,
   numbers, operators, and object keys.
 - Bracket matching, indentation rules, snippets, and an optional file-icon
   theme.
 
 To use the packaged extension, download the `.vsix` from the
-[Pfy 1.0.0 release](https://github.com/Bxat01/Pfy-Language/releases/tag/v1.0.0)
+[Pfy 1.0.1 release](https://github.com/Bxat01/Pfy-Language/releases/tag/v1.0.1)
 and install it using **Extensions** → **…** → **Install from VSIX...**.
+
+The extension registers the `.pfy` file extension and recognizes the `pfy
+1.0` header. The optional file icon theme is separate: after installing the
+extension, run **Preferences: File Icon Theme** and select **Pfy Icons**.
+VS Code permits one file icon theme at a time, so selecting Pfy Icons replaces
+the currently selected file icon theme for that profile.
 
 The extension is not yet published to the public Visual Studio Marketplace.
 There is also no Pfy Language Server yet, so the extension does not provide
