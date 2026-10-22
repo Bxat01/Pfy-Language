@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.20)
 
 project(pfy VERSION 1.0.0 LANGUAGES CXX)
 
+include(CTest)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -31,3 +33,22 @@ else()
 endif()
 
 install(TARGETS pfy RUNTIME DESTINATION bin)
+
+if (BUILD_TESTING)
+    add_test(
+        NAME pfy_version
+        COMMAND pfy version
+    )
+    add_test(
+        NAME pfy_check_config
+        COMMAND pfy check "${CMAKE_CURRENT_SOURCE_DIR}/examples/config.pfy"
+    )
+    add_test(
+        NAME pfy_run_config_json
+        COMMAND pfy run "${CMAKE_CURRENT_SOURCE_DIR}/examples/config.pfy" --json
+    )
+    add_test(
+        NAME pfy_run_main
+        COMMAND pfy run "${CMAKE_CURRENT_SOURCE_DIR}/examples/main.pfy"
+    )
+endif()
