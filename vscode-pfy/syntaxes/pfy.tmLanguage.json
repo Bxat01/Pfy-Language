@@ -1,0 +1,195 @@
+{
+  "name": "Pfy",
+  "scopeName": "source.pfy",
+  "fileTypes": [
+    "pfy"
+  ],
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#header"
+    },
+    {
+      "include": "#function-declaration"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#builtins"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keys"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#punctuation"
+    },
+    {
+      "include": "#identifiers"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.pfy",
+          "match": "#.*$"
+        },
+        {
+          "name": "comment.line.double-slash.pfy",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.pfy",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "header": {
+      "patterns": [
+        {
+          "match": "^\\s*(pfy)\\s+(\\d+(?:\\.\\d+)?)\\s*(;)?",
+          "captures": {
+            "1": {
+              "name": "keyword.other.header.pfy"
+            },
+            "2": {
+              "name": "constant.numeric.version.pfy"
+            },
+            "3": {
+              "name": "punctuation.terminator.pfy"
+            }
+          }
+        }
+      ]
+    },
+    "function-declaration": {
+      "patterns": [
+        {
+          "match": "\\b(fn)(\\s+)([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.function.pfy"
+            },
+            "2": {
+              "name": "meta.whitespace.pfy"
+            },
+            "3": {
+              "name": "entity.name.function.pfy"
+            }
+          }
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.pfy",
+          "match": "\\b(let|set|if|else|while|for|in|return|break|continue)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.pfy",
+          "match": "\\b(true|false|null)\\b"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.pfy",
+          "match": "\\b(print|len|type|str|num|keys|has|push|range|json|error)\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.pfy",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.pfy",
+              "match": "\\\\(?:[\"\\\\/bfnrt]|u[0-9A-Fa-f]{4})"
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.pfy",
+          "match": "\\b0[xX][0-9A-Fa-f]+\\b"
+        },
+        {
+          "name": "constant.numeric.decimal.pfy",
+          "match": "\\b\\d+(?:\\.\\d+)?(?:[eE][+-]?\\d+)?\\b"
+        }
+      ]
+    },
+    "keys": {
+      "patterns": [
+        {
+          "match": "\\b([A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*)(?=\\s*[:=])",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag.pfy"
+            }
+          }
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.pfy",
+          "match": "==|!=|<=|>=|&&|\\|\\||[+\\-*/%!<>=]"
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.pfy",
+          "match": "[,;]"
+        },
+        {
+          "name": "punctuation.terminator.pfy",
+          "match": "\\."
+        },
+        {
+          "name": "punctuation.section.pfy",
+          "match": "[{}\\[\\]():]"
+        }
+      ]
+    },
+    "identifiers": {
+      "patterns": [
+        {
+          "name": "variable.other.pfy",
+          "match": "\\b[A-Za-z_][A-Za-z0-9_]*\\b"
+        }
+      ]
+    }
+  }
+}
