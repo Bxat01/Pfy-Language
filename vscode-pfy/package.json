@@ -1,0 +1,61 @@
+{
+  "name": "pfy-language",
+  "displayName": "Pfy",
+  "description": "Syntax highlighting, snippets, and file icons for the Pfy data and scripting language.",
+  "version": "1.0.0",
+  "publisher": "bxat01",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "pfy",
+    "playfy",
+    "configuration",
+    "language",
+    "syntax"
+  ],
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bxat01/Pfy-Language"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "pfy",
+        "aliases": [
+          "Pfy"
+        ],
+        "extensions": [
+          ".pfy"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pfy",
+        "scopeName": "source.pfy",
+        "path": "./syntaxes/pfy.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "pfy",
+        "path": "./snippets/pfy.json"
+      }
+    ],
+    "fileIconThemes": [
+      {
+        "id": "pfy-icons",
+        "label": "Pfy Icons",
+        "path": "./icons/pfy-icon-theme.json"
+      }
+    ]
+  }
+}
