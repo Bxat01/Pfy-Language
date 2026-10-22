@@ -55,18 +55,28 @@ The same commands work on Unix with `./build/pfy`.
 
 A `.pfyb` file is validated before execution: signature, format version, source checksum, payload checksum, node depth, string lengths, and node count are all checked.
 
+## Build verification
+
+The project uses CMake and runs its build and smoke tests with CTest on Windows, Linux, and macOS through GitHub Actions:
+
+```sh
+cmake -S . -B build
+cmake --build build --config Release --parallel
+ctest --test-dir build --build-config Release --output-on-failure
+```
+
 ## Releases and container image
 
 The `v1.0.0` release includes a Windows x64 CLI archive and the VS Code extension package (`.vsix`). The release page also provides GitHub's automatically generated source archives.
 
-Container images are published to GitHub Container Registry when a version tag is pushed:
+The repository includes a GitHub Actions workflow to build and publish container images to GitHub Container Registry when a version tag is pushed. No container image has been published yet.
 
 ```sh
 docker pull ghcr.io/bxat01/pfy-language:1.0.0
 docker run --rm ghcr.io/bxat01/pfy-language:1.0.0 version
 ```
 
-The image runs the Pfy CLI. The repository and its container package are currently private, so GitHub access and container-registry authentication are required to download it.
+After publication, the image will run the Pfy CLI. The repository is private, so GitHub access and container-registry authentication are required to download it.
 
 ## Language at a glance
 
