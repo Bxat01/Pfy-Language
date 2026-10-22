@@ -17,7 +17,7 @@ Editor support for the [Pfy language](https://github.com/Bxat01/Pfy-Language), i
 cd vscode-pfy
 npm install
 npx @vscode/vsce package
-code --install-extension pfy-language-1.0.0.vsix
+code --install-extension pfy-language-1.0.1.vsix
 ```
 
 ### Development host
@@ -27,6 +27,10 @@ Open this directory in VS Code and press `F5`. Select **Run Extension** if promp
 ### File icons
 
 The extension contributes a file icon theme, but VS Code uses one icon theme at a time. Enable it with **Preferences: File Icon Theme → Pfy Icons**. It can be combined with a product icon theme independently.
+
+Installing the extension does not automatically switch your current file icon theme. To show the Pfy icon next to `.pfy` files, select **Pfy Icons** once from the File Icon Theme picker. This changes the file icon theme for the VS Code profile.
+
+The extension also detects the `pfy 1.0` header in files without a `.pfy` extension. Files ending in `.pfy` are identified as Pfy by their extension.
 
 ## Language
 
