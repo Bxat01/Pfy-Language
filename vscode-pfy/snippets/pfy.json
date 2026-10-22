@@ -1,0 +1,85 @@
+{
+  "Pfy document header": {
+    "prefix": "pfy-header",
+    "body": [
+      "pfy 1.0;",
+      "",
+      "$0"
+    ],
+    "description": "Insert the Pfy 1.0 header"
+  },
+  "Function declaration": {
+    "prefix": "pfy-fn",
+    "body": [
+      "fn ${1:name}(${2:arguments}) {",
+      "    ${0:return null;}",
+      "}"
+    ],
+    "description": "Declare a function"
+  },
+  "Conditional": {
+    "prefix": "pfy-if",
+    "body": [
+      "if (${1:condition}) {",
+      "    ${2}",
+      "} else {",
+      "    ${0}",
+      "}"
+    ],
+    "description": "Insert an if/else block"
+  },
+  "For loop": {
+    "prefix": "pfy-for",
+    "body": [
+      "for (${1:item} in ${2:values}) {",
+      "    ${0}",
+      "}"
+    ],
+    "description": "Iterate over an array, object or string"
+  },
+  "While loop": {
+    "prefix": "pfy-while",
+    "body": [
+      "while (${1:condition}) {",
+      "    ${0}",
+      "}"
+    ],
+    "description": "Insert a while loop"
+  },
+  "Object value": {
+    "prefix": "pfy-object",
+    "body": [
+      "{",
+      "    ${1:key}: ${2:value},",
+      "    $0",
+      "}"
+    ],
+    "description": "Insert an object literal"
+  },
+  "Playfy configuration": {
+    "prefix": "pfy-config",
+    "body": [
+      "pfy 1.0;",
+      "",
+      "application = \"Playfy\";",
+      "format = \"playfy-backup\";",
+      "version = \"${1:25.10.8}\";",
+      "",
+      "settings = {",
+      "    mode: \"night\",",
+      "    night: \"dark\",",
+      "    accent: \"#0062FF\",",
+      "    language: \"en\",",
+      "};",
+      "",
+      "shortcuts = {",
+      "    console.toggle: \"Alt+Backquote\",",
+      "};",
+      "",
+      "games = [];",
+      "queue = { intervalSec: 300, loop: true, entries: [] };",
+      "$0"
+    ],
+    "description": "Start a Playfy backup document"
+  }
+}
