@@ -55,6 +55,19 @@ The same commands work on Unix with `./build/pfy`.
 
 A `.pfyb` file is validated before execution: signature, format version, source checksum, payload checksum, node depth, string lengths, and node count are all checked.
 
+## Releases and container image
+
+The `v1.0.0` release includes a Windows x64 CLI archive and the VS Code extension package (`.vsix`). The release page also provides GitHub's automatically generated source archives.
+
+Container images are published to GitHub Container Registry when a version tag is pushed:
+
+```sh
+docker pull ghcr.io/bxat01/pfy-language:1.0.0
+docker run --rm ghcr.io/bxat01/pfy-language:1.0.0 version
+```
+
+The image runs the Pfy CLI. The repository and its container package are currently private, so GitHub access and container-registry authentication are required to download it.
+
 ## Language at a glance
 
 ```pfy
