@@ -1,0 +1,32 @@
+# A short tour of Pfy. Run it with:
+#   pfy run examples/main.pfy
+pfy 1.0;
+
+fn greet(name) {
+    return "Hello, " + name + "!";
+}
+
+let app = {
+    name: "Playfy",
+    version: "25.10.8",
+    channels: ["stable", "beta"],
+};
+
+print(greet("world"));
+print(app.name + " " + app.version);
+
+let total = 0;
+for (value in range(1, 6)) {
+    total = total + value;
+}
+print("range sum:", total);
+
+if (total == 15 && app.channels.length == 2) {
+    print("runtime checks passed");
+}
+
+let labels = [];
+for (channel in app.channels) {
+    push(labels, channel + "-build");
+}
+print("labels:", labels);
