@@ -1,0 +1,19 @@
+# Build output
+build/
+out/
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.pfy.exe
+
+# Generated images and reports
+*.pfyb
+backup*.json
+config-output.json
+
+# Editor
+.vs/
+.vscode/
+node_modules/
+*.vsix
