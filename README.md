@@ -170,6 +170,11 @@ The extension has no build step. It is plain JSON, JSONC, and SVG plus one PNG i
 
 ## Documentation
 
+- [Documentation home](docs/README.md)
+- [Getting started](docs/getting-started.md)
+- [Pfy tutorial](docs/tutorial.md)
+- [Editor support and syntax highlighting](docs/editor-support.md)
+- [Publishing Pfy and its editor support](docs/publishing.md)
 - [Language syntax](specification/syntax.md)
 - [EBNF grammar](specification/grammar.ebnf)
 - [Binary format](specification/binary-format.md)
