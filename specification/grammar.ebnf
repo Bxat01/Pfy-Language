@@ -1,0 +1,114 @@
+(*
+    Pfy 1.0 grammar
+    Terminals are written as quoted text. Whitespace and comments may appear
+    between any two tokens. The grammar is deliberately close to the reference
+    parser in parser/src/parser.cpp.
+*)
+
+document        = header, { statement }, EOF ;
+
+header          = "pfy", number, [ ";" ] ;
+
+statement       = let-statement
+                | set-statement
+                | function-declaration
+                | if-statement
+                | while-statement
+                | for-statement
+                | return-statement
+                | break-statement
+                | continue-statement
+                | field-assignment
+                | expression-statement ;
+
+let-statement   = "let", identifier, "=", expression, ";" ;
+
+set-statement   = "set", assignable, "=", expression, ";" ;
+
+function-declaration
+                = "fn", identifier, "(", [ parameter-list ], ")", block ;
+
+parameter-list  = identifier, { ",", identifier } ;
+
+if-statement    = "if", "(", expression, ")", block,
+                  [ "else", ( if-statement | block ) ] ;
+
+while-statement = "while", "(", expression, ")", block ;
+
+for-statement   = "for", "(", identifier, "in", expression, ")", block ;
+
+return-statement
+                = "return", [ expression ], ";" ;
+
+break-statement = "break", ";" ;
+continue-statement = "continue", ";" ;
+
+field-assignment
+                = key, "=", expression, ";" ;
+
+expression-statement
+                = expression, ";" ;
+
+block           = "{", { statement }, "}" ;
+
+assignable      = identifier
+                | assignable, ".", identifier
+                | assignable, "[", expression, "]" ;
+
+key             = identifier, { ".", identifier }
+                | string ;
+
+expression      = logical-or ;
+
+logical-or      = logical-and, { "||", logical-and } ;
+logical-and     = equality, { "&&", equality } ;
+equality        = comparison, { ( "==" | "!=" ), comparison } ;
+comparison      = term, { ( "<" | "<=" | ">" | ">=" ), term } ;
+term            = factor, { ( "+" | "-" ), factor } ;
+factor          = unary, { ( "*" | "/" | "%" ), unary } ;
+unary           = ( "!" | "-" | "+" ), unary
+                | postfix ;
+postfix         = primary, { call-suffix | index-suffix | member-suffix } ;
+
+call-suffix     = "(", [ argument-list ], ")" ;
+argument-list   = expression, { ",", expression } ;
+index-suffix    = "[", expression, "]" ;
+member-suffix   = ".", identifier ;
+
+primary         = number
+                | string
+                | "true"
+                | "false"
+                | "null"
+                | identifier
+                | "(", expression, ")"
+                | array
+                | object ;
+
+array           = "[", [ array-values ], "]" ;
+array-values    = expression, { ( "," | ";" ), expression }, [ "," | ";" ] ;
+
+object          = "{", [ object-fields ], "}" ;
+object-fields   = object-field, { ( "," | ";" ), object-field }, [ "," | ";" ] ;
+object-field    = key, ( ":" | "=" ), expression ;
+
+identifier      = identifier-start, { identifier-part } ;
+identifier-start= "A".."Z" | "a".."z" | "_" ;
+identifier-part = identifier-start | "0".."9" ;
+
+number          = decimal-number | hexadecimal-number ;
+decimal-number  = digit, { digit }, [ ".", digit, { digit } ],
+                  [ ( "e" | "E" ), [ "+" | "-" ], digit, { digit } ] ;
+hexadecimal-number = "0", ( "x" | "X" ), hex-digit, { hex-digit } ;
+
+string          = '"', { string-character | escape }, '"' ;
+escape          = "\\", ( '"' | "\\" | "/" | "b" | "f" | "n" | "r" | "t"
+                        | "u", hex-digit, hex-digit, hex-digit, hex-digit ) ;
+
+comment         = "#", { any-character-except-newline }
+                | "//", { any-character-except-newline }
+                | "/*", { any-character }, "*/" ;
+
+digit           = "0".."9" ;
+hex-digit       = digit | "A".."F" | "a".."f" ;
+EOF             = end of input ;
