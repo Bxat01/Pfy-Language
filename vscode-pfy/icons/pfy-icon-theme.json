@@ -1,0 +1,18 @@
+{
+  "iconDefinitions": {
+    "pfy-source": {
+      "iconPath": "./pfy.svg"
+    },
+    "pfy-binary": {
+      "iconPath": "./pfyb.svg"
+    }
+  },
+  "fileExtensions": {
+    "pfy": "pfy-source",
+    "pfyb": "pfy-binary"
+  },
+  "fileNames": {
+    "main.pfy": "pfy-source",
+    "config.pfy": "pfy-source"
+  }
+}
